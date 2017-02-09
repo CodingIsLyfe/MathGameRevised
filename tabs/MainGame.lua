@@ -113,18 +113,11 @@ function MainGame:draw()
     fill(255, 255, 255, 255)
     text("Tries: "..tries, WIDTH-300,HEIGHT/2+200)
     text("Skips: "..amountOfSkips, WIDTH-100, 150)
-    text("Highscore: "..amountOfQuestionsRight, WIDTH/2, HEIGHT-100)
+    text("Highscore: "..math.floor(highscore), WIDTH/2, HEIGHT-100)
     
     -- this displays the last problem, green was right, red was wrong
     if corr then
         fill(0,255,0)
-        amountOfCoins = amountOfCoins + 1
-        amountOfQuestionsRight = amountOfQuestionsRight + 1
-        --if(amountOfQuestionsRight > ) then
-            --alert("", "New Highscore: "..math.floor(amountOfQuestionsRight))
-        --end
-        saveLocalData("coins", amountOfCoins)
-        saveLocalData("highscore", amountOfQuestionsRight)
     else 
         fill(255, 0, 0, 255)
     end
@@ -164,6 +157,14 @@ function MainGame:touched(touch)
                 lastProb=str[choice]..math.tointeger(ans[choice])
                 create()
                 right=right+1
+                oldScore = highscore
+                highscore = highscore + 1
+                amountOfCoins = amountOfCoins + 1
+                saveLocalData("coins", amountOfCoins)
+                saveLocalData("highscore", highscore)
+                if(highscore > oldScore) then
+                    alert("", "New Highscore: "..math.floor(highscore))
+                end
                 tries=3
             else
                 wrong=wrong+1
