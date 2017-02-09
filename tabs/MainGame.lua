@@ -134,6 +134,7 @@ function MainGame:touched(touch)
     elseif(skipButton.selected == true) then
         if(amountOfSkips > 0) then
             amountOfSkips = amountOfSkips - 1
+            saveLocalData("skips", amountOfSkips)
             create()
         else
             alert("Not enough skips", "Oh no!")
