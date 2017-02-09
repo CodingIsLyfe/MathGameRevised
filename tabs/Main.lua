@@ -4,7 +4,7 @@ displayMode(FULLSCREEN)
 --global variables
 amountOfCoins = nil 
 amountOfSkips = nil
-highscore = 0
+highscore = nil
 operatorSelected = ""
 difficultySelected= ""
 
@@ -16,7 +16,7 @@ function setup()
     
     amountOfCoins = readLocalData("coins", 0)
     amountOfSkips = readLocalData("skips", 0)
-    --highscore = readLocalData("highscore", 0)
+    highscore = readLocalData("highscore", 0)
     
     Scene("mainmenu", MainMenu)
     Scene("operator", OperatorMenu)
