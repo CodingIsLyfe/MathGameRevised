@@ -30,7 +30,7 @@ function OperatorMenu:draw()
     subtractionButton:draw()
     multiplicationButton:draw()
     divisionButton:draw()
-    allButton:draw()
+    --allButton:draw()
 end
 
 function OperatorMenu:touched(touch)

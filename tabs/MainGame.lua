@@ -19,7 +19,6 @@ function create()
     a,ans,str={},{},{}
     choice=math.random(4)
     for z=1,4 do
-        
         if operatorSelected == "+" then    --  add
             if difficultySelected == "easy" then
                 a[z]=vec2(math.random(9),math.random(9))
@@ -71,9 +70,17 @@ function create()
             a[z]=vec2(a1*a2,a1) -- prevent fractional answer
             str[z]=string.format("%d / %d = ",a[z].x,a[z].y)
             ans[z]=a[z].x/a[z].y
-        elseif operatorSelected == "@" then --all operations
-            allOperators = math.random(1,4)
-            if allOperators == 1 then operatorSelected = "+" elseif allOperators == 2 then operatorSelected = "-" elseif allOperators == 3 then operatorSelected = "*" elseif allOperators == 4 then operatorSelected = "/" end create()
+        --[[elseif operatorSelected == "@" then --all operations
+            allOperators = math.random(4)
+            if allOperators == 1 then 
+                
+            elseif allOperators == 2 then
+            
+            elseif allOperators == 3 then
+                
+            elseif allOperators == 4 then
+                
+            end--]]
         end        
     end
 end

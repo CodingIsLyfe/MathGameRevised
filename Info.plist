@@ -11,6 +11,7 @@
 		<string>OperatorMenu</string>
 		<string>DifficultyMenu</string>
 		<string>MainGame</string>
+		<string>Help</string>
 		<string>Store</string>
 		<string>HelperClass</string>
 	</array>
