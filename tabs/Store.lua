@@ -34,7 +34,7 @@ function Store:touched(touch)
     end
     
     if(buyButton.selected == true) then
-        if(amountOfCoins > 5) then
+        if(amountOfCoins >= 5) then
             amountOfCoins = amountOfCoins - 5
             amountOfSkips = amountOfSkips + 1
             saveLocalData("coins", amountOfCoins)

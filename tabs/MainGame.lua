@@ -111,9 +111,15 @@ function MainGame:draw()
     
     -- th displays tries and skips and highscore
     fill(255, 255, 255, 255)
-    text("Tries: "..tries, WIDTH-300,HEIGHT/2+200)
-    text("Skips: "..amountOfSkips, WIDTH-100, 150)
-    text("Highscore: "..math.floor(highscore), WIDTH/2, HEIGHT-100)
+    fontSize(40)
+    text("Tries: "..math.floor(tries), WIDTH/2-160, HEIGHT/2+70)
+    text("Skips: "..math.floor(amountOfSkips), WIDTH-100, 150)
+    text("Highscore: "..math.floor(highscore), WIDTH/2, HEIGHT-120)
+    
+    if(right == highscore + 1) then
+        highscore = right
+        saveLocalData("highscore", highscore)
+    end
     
     -- this displays the last problem, green was right, red was wrong
     if corr then
@@ -158,14 +164,6 @@ function MainGame:touched(touch)
                 lastProb=str[choice]..math.tointeger(ans[choice])
                 create()
                 right=right+1
-                oldScore = highscore
-                highscore = highscore + 1
-                amountOfCoins = amountOfCoins + 1
-                saveLocalData("coins", amountOfCoins)
-                saveLocalData("highscore", highscore)
-                if(highscore > oldScore) then
-                    alert("", "New Highscore: "..math.floor(highscore))
-                end
                 tries=3
             else
                 wrong=wrong+1
