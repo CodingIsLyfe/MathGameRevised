@@ -19,6 +19,7 @@ function create()
     a,ans,str={},{},{}
     choice=math.random(4)
     for z=1,4 do
+        
         if operatorSelected == "+" then    --  add
             if difficultySelected == "easy" then
                 a[z]=vec2(math.random(9),math.random(9))
@@ -29,6 +30,7 @@ function create()
             end
             str[z]=string.format("%d + %d = ",a[z].x,a[z].y)
             ans[z]=math.tointeger(a[z].x+a[z].y)
+            
         elseif operatorSelected == "-" then    --  subtract
             if difficultySelected == "easy" then
                 a1=math.random(9)
@@ -43,6 +45,7 @@ function create()
             a[z]=vec2(math.max(a1,a2),math.min(a1,a2))  -- prevent negative answer
             str[z]=string.format("%d - %d = ",a[z].x,a[z].y)
             ans[z]=math.tointeger(a[z].x-a[z].y)
+            
         elseif operatorSelected == "*" then    -- multiply
             if difficultySelected == "easy" then
                 a[z]=vec2(math.random(9),math.random(9))
@@ -53,20 +56,24 @@ function create()
             end
             str[z]=string.format("%d x %d = ",a[z].x,a[z].y)
             ans[z]=math.tointeger(a[z].x*a[z].y)
+            
         elseif operatorSelected == "/" then    -- divide
             if difficultySelected == "easy" then
-                a1=math.random(1,9)
-                a2=math.random(9)//a1
+                a1=math.random(2)
+                a2=math.random(3, 9)//a1
             elseif difficultySelected == "medium" then
-                a1=math.random(1,99)
-                a2=math.random(99)//a1
+                a1=math.random(10)
+                a2=math.random(30, 99)//a1
             elseif difficultySelected == "hard" then
-                a1=math.random(1,999)
-                a2=math.random(999)//a1
+                a1=math.random(100)
+                a2=math.random(300, 999)//a1
             end
             a[z]=vec2(a1*a2,a1) -- prevent fractional answer
             str[z]=string.format("%d / %d = ",a[z].x,a[z].y)
             ans[z]=a[z].x/a[z].y
+        elseif operatorSelected == "@" then --all operations
+            allOperators = math.random(1,4)
+            if allOperators == 1 then operatorSelected = "+" elseif allOperators == 2 then operatorSelected = "-" elseif allOperators == 3 then operatorSelected = "*" elseif allOperators == 4 then operatorSelected = "/" end create()
         end        
     end
 end
